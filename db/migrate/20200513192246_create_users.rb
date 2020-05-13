@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.datetime :birth
       t.string :favorite_genres
       t.text :biography
-      t.string :email
       t.string :username
       t.references :country, null: false, foreign_key: true
 

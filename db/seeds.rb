@@ -222,17 +222,17 @@ Label.create(
     added_by: ""
 )
 
+User.create(
+    first_name: "Admin", email: "admin@admin.com", username: "admin",
+    country: Country.find_by(:name => "Brazil"), password: "admin123"
+)
+
 Band.create(
     name: "As I Lay Dying", genre: "Metalcore", location: "San Diego, California",
     themes: "Christianity (early); Relationships, Inner struggles",
     info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, and guitarist Evan White, and shortly thereafter released Beneath the Encasing of Ashes. The band is named after the William Faulkner novel of the same name. A split CD with American Tragedy followed the next year. In 2003, the band signed with Metal Blade Records and released Frail Words Collapse.",
     added_by: "", band_status: BandStatus.first, label: Label.first,
     country: Country.find_by(:name => "United States of America")
-)
-
-User.create(
-    first_name: "Admin", email: "admin@admin.com", username: "admin",
-    country: Country.find_by(:name => "Brazil")
 )
 
 Artist.create(
