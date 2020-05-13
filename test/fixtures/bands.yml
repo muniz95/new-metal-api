@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  genre: MyString
+  themes: MyString
+  photo: MyString
+  info: MyText
+  added_by: MyString
+  band_status: one
+  label: one
+  country: one
+
+two:
+  name: MyString
+  genre: MyString
+  themes: MyString
+  photo: MyString
+  info: MyText
+  added_by: MyString
+  band_status: two
+  label: two
+  country: two

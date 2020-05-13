@@ -221,3 +221,11 @@ Label.create(
     trivia: "Originally called Blast Records. The label's first release was a vinyl compilation called Senseless Death, which featured a plethora of US hardcore bands, including Attitude, Sacred Denial, Impulse Manslaughter, and others. Only 1000 copies were pressed (catalogue # NB 001).",
     added_by: ""
 )
+
+Band.create(
+    name: "As I Lay Dying", genre: "Metalcore", location: "San Diego, California",
+    themes: "Christianity (early); Relationships, Inner struggles",
+    info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, and guitarist Evan White, and shortly thereafter released Beneath the Encasing of Ashes. The band is named after the William Faulkner novel of the same name. A split CD with American Tragedy followed the next year. In 2003, the band signed with Metal Blade Records and released Frail Words Collapse.",
+    added_by: "", band_status: BandStatus.first,
+    country: Country.find_by(:name => "United States of America")
+)

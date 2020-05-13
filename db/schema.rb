@@ -10,13 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_020639) do
+ActiveRecord::Schema.define(version: 2020_05_13_031109) do
 
   create_table "band_statuses", force: :cascade do |t|
     t.string "title"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bands", force: :cascade do |t|
+    t.string "name"
+    t.string "genre"
+    t.string "location"
+    t.datetime "formed_in"
+    t.string "themes"
+    t.string "photo"
+    t.text "info"
+    t.string "added_by"
+    t.integer "band_status_id", null: false
+    t.integer "label_id", null: false
+    t.integer "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["band_status_id"], name: "index_bands_on_band_status_id"
+    t.index ["country_id"], name: "index_bands_on_country_id"
+    t.index ["label_id"], name: "index_bands_on_label_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -45,5 +64,8 @@ ActiveRecord::Schema.define(version: 2020_05_13_020639) do
     t.index ["country_id"], name: "index_labels_on_country_id"
   end
 
+  add_foreign_key "bands", "band_statuses"
+  add_foreign_key "bands", "countries"
+  add_foreign_key "bands", "labels"
   add_foreign_key "labels", "countries"
 end
