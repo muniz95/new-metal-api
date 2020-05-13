@@ -211,3 +211,13 @@ BandStatus.create(title: "Split-up", color: "AC0000")
 BandStatus.create(title: "Changed name", color: "4C75E6")
 BandStatus.create(title: "Unknown", color: "BD632C")
 BandStatus.create(title: "Disputed", color: "B0F")
+
+Label.create(
+    name: "Nuclear Blast", address: "Oeschstr. 40 73072 Donzdorf",
+    country: Country.find_by(:name => "Germany"), phone: "+49 7162 9280-0",
+    status: "Active", specialities: "Hardcore (early), Metal and subgenres",
+    founding_date: DateTime.new(1987), online_shopping: "Yes",
+    description: "Founded by Markus Staiger.",
+    trivia: "Originally called Blast Records. The label's first release was a vinyl compilation called Senseless Death, which featured a plethora of US hardcore bands, including Attitude, Sacred Denial, Impulse Manslaughter, and others. Only 1000 copies were pressed (catalogue # NB 001).",
+    added_by: ""
+)

@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  phone: MyString
+  status: MyString
+  specialities: MyString
+  founding_date: 2020-05-12 23:06:39
+  online_shopping: MyString
+  additional_notes: MyText
+  description: MyText
+  trivia: MyText
+  added_by: MyString
+  addition_date: 2020-05-12 23:06:39
+  parent_label_id: 1
+  country: one
+
+two:
+  name: MyString
+  address: MyString
+  phone: MyString
+  status: MyString
+  specialities: MyString
+  founding_date: 2020-05-12 23:06:39
+  online_shopping: MyString
+  additional_notes: MyText
+  description: MyText
+  trivia: MyText
+  added_by: MyString
+  addition_date: 2020-05-12 23:06:39
+  parent_label_id: 1
+  country: two

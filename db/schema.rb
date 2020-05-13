@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_014534) do
+ActiveRecord::Schema.define(version: 2020_05_13_020639) do
 
   create_table "band_statuses", force: :cascade do |t|
     t.string "title"
@@ -25,4 +25,25 @@ ActiveRecord::Schema.define(version: 2020_05_13_014534) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "status"
+    t.string "specialities"
+    t.datetime "founding_date"
+    t.string "online_shopping"
+    t.text "additional_notes"
+    t.text "description"
+    t.text "trivia"
+    t.string "added_by"
+    t.datetime "addition_date"
+    t.integer "parent_label_id"
+    t.integer "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_labels_on_country_id"
+  end
+
+  add_foreign_key "labels", "countries"
 end
