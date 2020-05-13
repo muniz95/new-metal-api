@@ -229,3 +229,14 @@ Band.create(
     added_by: "", band_status: BandStatus.first, label: Label.first,
     country: Country.find_by(:name => "United States of America")
 )
+
+User.create(
+    first_name: "Admin", email: "admin@admin.com", username: "admin",
+    country: Country.find_by(:name => "Brazil")
+)
+
+Artist.create(
+    name: "Tim Lambesis", birth: DateTime.new(1980, 11, 21), gender: "Male",
+    country: Country.find_by(:name => "United States of America"),
+    district: "Arizona", city: "Scottsdale", user: User.first
+)

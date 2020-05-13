@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_031109) do
+ActiveRecord::Schema.define(version: 2020_05_13_192246) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "moniker"
+    t.datetime "birth"
+    t.datetime "death"
+    t.string "gender"
+    t.string "district"
+    t.string "city"
+    t.text "biography"
+    t.text "trivia"
+    t.integer "user_id", null: false
+    t.integer "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_artists_on_country_id"
+    t.index ["user_id"], name: "index_artists_on_user_id"
+  end
 
   create_table "band_statuses", force: :cascade do |t|
     t.string "title"
@@ -64,8 +82,26 @@ ActiveRecord::Schema.define(version: 2020_05_13_031109) do
     t.index ["country_id"], name: "index_labels_on_country_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "gender"
+    t.datetime "birth"
+    t.string "favorite_genres"
+    t.text "biography"
+    t.string "email"
+    t.string "username"
+    t.integer "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_users_on_country_id"
+  end
+
+  add_foreign_key "artists", "countries"
+  add_foreign_key "artists", "users"
   add_foreign_key "bands", "band_statuses"
   add_foreign_key "bands", "countries"
   add_foreign_key "bands", "labels"
   add_foreign_key "labels", "countries"
+  add_foreign_key "users", "countries"
 end
