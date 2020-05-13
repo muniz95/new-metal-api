@@ -1,0 +1,2 @@
+class BandStatus < ApplicationRecord
+end

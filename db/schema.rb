@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_021307) do
+ActiveRecord::Schema.define(version: 2020_05_13_014534) do
+
+  create_table "band_statuses", force: :cascade do |t|
+    t.string "title"
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
