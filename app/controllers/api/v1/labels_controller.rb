@@ -1,4 +1,4 @@
-class LabelsController < ApplicationController
+class Api::V1::LabelsController < ApplicationController
   before_action :set_label, only: [:show, :update, :destroy]
 
   # GET /labels
