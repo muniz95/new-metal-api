@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_215314) do
+ActiveRecord::Schema.define(version: 2020_05_14_023114) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_215314) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "jti", default: "", null: false
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
