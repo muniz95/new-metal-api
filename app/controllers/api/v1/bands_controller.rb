@@ -1,5 +1,5 @@
 class Api::V1::BandsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :create, :update, :destroy]
   before_action :set_band, only: [:show, :update, :destroy]
 
   # GET /bands

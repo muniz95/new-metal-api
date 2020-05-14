@@ -7,4 +7,14 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: self
   belongs_to :country
+
+  def jwt_payload
+    self.jti = self.class.generate_jti
+    self.save
+
+    # super isn't doing anything useful, but if the gem updates i'll want it to be safe
+    super.merge({
+      jti: self.jti
+    })
+  end
 end
