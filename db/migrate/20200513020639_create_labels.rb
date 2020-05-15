@@ -11,9 +11,9 @@ class CreateLabels < ActiveRecord::Migration[6.0]
       t.text :additional_notes
       t.text :description
       t.text :trivia
-      t.string :added_by
       t.datetime :addition_date
       t.integer :parent_label_id
+      t.references :user, null: false, foreign_key: true
       t.references :country, null: false, foreign_key: true
 
       t.timestamps

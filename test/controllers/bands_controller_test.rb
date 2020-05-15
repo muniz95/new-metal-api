@@ -12,7 +12,7 @@ class BandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create band" do
     assert_difference('Band.count') do
-      post bands_url, params: { band: { added_by: @band.added_by, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
+      post bands_url, params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class BandsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update band" do
-    patch band_url(@band), params: { band: { added_by: @band.added_by, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
+    patch band_url(@band), params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
     assert_response 200
   end
 

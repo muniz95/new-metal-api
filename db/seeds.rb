@@ -205,6 +205,11 @@ Country.create(name: "Yemen")
 Country.create(name: "Zambia")
 Country.create(name: "Zimbabwe")
 
+User.create(
+    first_name: "Admin", email: "admin@admin.com", username: "admin",
+    country: Country.find_by(:name => "Brazil"), password: "admin123"
+)
+
 BandStatus.create(title: "Active", color: "690")
 BandStatus.create(title: "On hold", color: "DED24E")
 BandStatus.create(title: "Split-up", color: "AC0000")
@@ -219,19 +224,14 @@ Label.create(
     founding_date: DateTime.new(1987), online_shopping: "Yes",
     description: "Founded by Markus Staiger.",
     trivia: "Originally called Blast Records. The label's first release was a vinyl compilation called Senseless Death, which featured a plethora of US hardcore bands, including Attitude, Sacred Denial, Impulse Manslaughter, and others. Only 1000 copies were pressed (catalogue # NB 001).",
-    added_by: ""
-)
-
-User.create(
-    first_name: "Admin", email: "admin@admin.com", username: "admin",
-    country: Country.find_by(:name => "Brazil"), password: "admin123"
+    user: User.first
 )
 
 Band.create(
     name: "As I Lay Dying", genre: "Metalcore", location: "San Diego, California",
     themes: "Christianity (early); Relationships, Inner struggles",
     info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, and guitarist Evan White, and shortly thereafter released Beneath the Encasing of Ashes. The band is named after the William Faulkner novel of the same name. A split CD with American Tragedy followed the next year. In 2003, the band signed with Metal Blade Records and released Frail Words Collapse.",
-    added_by: "", band_status: BandStatus.first, label: Label.first,
+    user: User.first, band_status: BandStatus.first, label: Label.first,
     country: Country.find_by(:name => "United States of America")
 )
 

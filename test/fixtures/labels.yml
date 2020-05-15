@@ -11,10 +11,10 @@ one:
   additional_notes: MyText
   description: MyText
   trivia: MyText
-  added_by: MyString
   addition_date: 2020-05-12 23:06:39
   parent_label_id: 1
   country: one
+  user: one
 
 two:
   name: MyString
@@ -27,7 +27,7 @@ two:
   additional_notes: MyText
   description: MyText
   trivia: MyText
-  added_by: MyString
   addition_date: 2020-05-12 23:06:39
   parent_label_id: 1
   country: two
+  user: two

@@ -6,7 +6,7 @@ one:
   themes: MyString
   photo: MyString
   info: MyText
-  added_by: MyString
+  user: MyString
   band_status: one
   label: one
   country: one
@@ -17,7 +17,7 @@ two:
   themes: MyString
   photo: MyString
   info: MyText
-  added_by: MyString
+  user: two
   band_status: two
   label: two
   country: two

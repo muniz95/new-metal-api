@@ -12,7 +12,7 @@ class LabelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create label" do
     assert_difference('Label.count') do
-      post labels_url, params: { label: { added_by: @label.added_by, addition_date: @label.addition_date, additional_notes: @label.additional_notes, address: @label.address, country_id: @label.country_id, description: @label.description, founding_date: @label.founding_date, name: @label.name, online_shopping: @label.online_shopping, parent_label_id: @label.parent_label_id, phone: @label.phone, specialities: @label.specialities, status: @label.status, trivia: @label.trivia } }, as: :json
+      post labels_url, params: { label: { user_id: @label.user_id, addition_date: @label.addition_date, additional_notes: @label.additional_notes, address: @label.address, country_id: @label.country_id, description: @label.description, founding_date: @label.founding_date, name: @label.name, online_shopping: @label.online_shopping, parent_label_id: @label.parent_label_id, phone: @label.phone, specialities: @label.specialities, status: @label.status, trivia: @label.trivia } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class LabelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update label" do
-    patch label_url(@label), params: { label: { added_by: @label.added_by, addition_date: @label.addition_date, additional_notes: @label.additional_notes, address: @label.address, country_id: @label.country_id, description: @label.description, founding_date: @label.founding_date, name: @label.name, online_shopping: @label.online_shopping, parent_label_id: @label.parent_label_id, phone: @label.phone, specialities: @label.specialities, status: @label.status, trivia: @label.trivia } }, as: :json
+    patch label_url(@label), params: { label: { user_id: @label.user_id, addition_date: @label.addition_date, additional_notes: @label.additional_notes, address: @label.address, country_id: @label.country_id, description: @label.description, founding_date: @label.founding_date, name: @label.name, online_shopping: @label.online_shopping, parent_label_id: @label.parent_label_id, phone: @label.phone, specialities: @label.specialities, status: @label.status, trivia: @label.trivia } }, as: :json
     assert_response 200
   end
 

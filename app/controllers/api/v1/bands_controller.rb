@@ -1,5 +1,5 @@
 class Api::V1::BandsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_band, only: [:show, :update, :destroy]
 
   # GET /bands
@@ -47,6 +47,6 @@ class Api::V1::BandsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def band_params
-      params.require(:band).permit(:name, :genre, :themes, :photo, :location, :info, :added_by, :band_status_id, :label_id, :country_id)
+      params.require(:band).permit(:name, :genre, :themes, :photo, :location, :info, :user_id, :band_status_id, :label_id, :country_id)
     end
 end

@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
     t.string "themes"
     t.string "photo"
     t.text "info"
-    t.string "added_by"
+    t.integer "user_id", null: false
     t.integer "band_status_id", null: false
     t.integer "label_id", null: false
     t.integer "country_id", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
     t.index ["band_status_id"], name: "index_bands_on_band_status_id"
     t.index ["country_id"], name: "index_bands_on_country_id"
     t.index ["label_id"], name: "index_bands_on_label_id"
+    t.index ["user_id"], name: "index_bands_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -73,13 +74,14 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
     t.text "additional_notes"
     t.text "description"
     t.text "trivia"
-    t.string "added_by"
     t.datetime "addition_date"
     t.integer "parent_label_id"
+    t.integer "user_id", null: false
     t.integer "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_labels_on_country_id"
+    t.index ["user_id"], name: "index_labels_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,6 +111,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
   add_foreign_key "bands", "band_statuses"
   add_foreign_key "bands", "countries"
   add_foreign_key "bands", "labels"
+  add_foreign_key "bands", "users"
   add_foreign_key "labels", "countries"
+  add_foreign_key "labels", "users"
   add_foreign_key "users", "countries"
 end

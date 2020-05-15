@@ -46,6 +46,6 @@ class Api::V1::LabelsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def label_params
-      params.require(:label).permit(:name, :address, :phone, :status, :specialities, :founding_date, :online_shopping, :additional_notes, :description, :trivia, :added_by, :addition_date, :parent_label_id, :country_id)
+      params.require(:label).permit(:name, :address, :phone, :status, :specialities, :founding_date, :online_shopping, :additional_notes, :description, :trivia, :user_id, :addition_date, :parent_label_id, :country_id)
     end
 end
