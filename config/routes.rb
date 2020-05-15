@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :artists
       resources :bands
+      resources :band_statuses, only: :index
       resources :countries
       resources :labels
     end

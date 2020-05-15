@@ -19,7 +19,7 @@ class Api::V1::BandsController < ApplicationController
     @band = Band.new(band_params)
 
     if @band.save
-      render json: @band, status: :created, location: @band
+      render json: @band, status: :created
     else
       render json: @band.errors, status: :unprocessable_entity
     end
@@ -47,6 +47,6 @@ class Api::V1::BandsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def band_params
-      params.require(:band).permit(:name, :genre, :themes, :photo, :info, :added_by, :band_status_id, :label_id, :country_id)
+      params.require(:band).permit(:name, :genre, :themes, :photo, :location, :info, :added_by, :band_status_id, :label_id, :country_id)
     end
 end
