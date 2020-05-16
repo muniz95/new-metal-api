@@ -240,3 +240,11 @@ Artist.create(
     country: Country.find_by(:name => "United States of America"),
     district: "Arizona", city: "Scottsdale", user: User.first
 )
+
+Release.create(
+  name: 'Shaped by Fire', release_type: 'Full-length', genre: 'Metalcore',
+  format: 'CD', release_date: DateTime.new(2019, 9, 20),
+  user: User.first, label: Label.first
+)
+
+Participation.create(band: Band.first, release: Release.first)

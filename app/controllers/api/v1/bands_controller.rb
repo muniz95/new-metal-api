@@ -9,7 +9,10 @@ class Api::V1::BandsController < ApplicationController
 
   # GET /bands/1
   def show
-    render json: @band
+    render json: @band, :include => [
+      :country, :user, :band_status, :label,
+      { :participations => { :include => :release} }
+    ]
   end
 
   # POST /bands
@@ -40,7 +43,7 @@ class Api::V1::BandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_band
-      @band = Band.find(params[:id], :include => [:country, :user])
+      @band = Band.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

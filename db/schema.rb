@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_023114) do
+ActiveRecord::Schema.define(version: 2020_05_16_040443) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -85,6 +85,36 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
     t.index ["user_id"], name: "index_labels_on_user_id"
   end
 
+  create_table "participations", force: :cascade do |t|
+    t.integer "band_id", null: false
+    t.integer "release_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["band_id"], name: "index_participations_on_band_id"
+    t.index ["release_id"], name: "index_participations_on_release_id"
+  end
+
+  create_table "releases", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "release_type"
+    t.datetime "release_date"
+    t.string "genre"
+    t.string "format"
+    t.string "catalog_id"
+    t.text "additional_notes"
+    t.text "recording_information"
+    t.text "identifiers"
+    t.integer "user_id", null: false
+    t.integer "label_id"
+    t.integer "release_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_releases_on_label_id"
+    t.index ["release_id"], name: "index_releases_on_release_id"
+    t.index ["user_id"], name: "index_releases_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -115,5 +145,10 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
   add_foreign_key "bands", "users"
   add_foreign_key "labels", "countries"
   add_foreign_key "labels", "users"
+  add_foreign_key "participations", "bands"
+  add_foreign_key "participations", "releases"
+  add_foreign_key "releases", "labels"
+  add_foreign_key "releases", "releases"
+  add_foreign_key "releases", "users"
   add_foreign_key "users", "countries"
 end
