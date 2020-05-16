@@ -1,12 +1,10 @@
 class Api::V1::BandsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_band, only: [:show, :update, :destroy]
+  before_action :check_includes, only: :index
 
   # GET /bands
   def index
-    @bands = Band.all
-
-    render json: @bands
   end
 
   # GET /bands/1
@@ -42,11 +40,20 @@ class Api::V1::BandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_band
-      @band = Band.find(params[:id])
+      @band = Band.find(params[:id], :include => [:country, :user])
     end
 
     # Only allow a trusted parameter "white list" through.
     def band_params
       params.require(:band).permit(:name, :genre, :themes, :photo, :location, :info, :user_id, :band_status_id, :label_id, :country_id)
+    end
+
+    def check_includes
+      @bands = Band.all
+      if params.key? :includes
+        render json: @bands, :include => params[:includes].split(',')
+      else
+        render json: @bands
+      end
     end
 end

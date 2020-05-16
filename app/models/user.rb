@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: self
   belongs_to :country
+  has_many :bands
 
   def jwt_payload
     self.jti = self.class.generate_jti

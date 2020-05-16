@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_023114) do
     t.string "themes"
     t.string "photo"
     t.text "info"
+    t.boolean "approved"
     t.integer "user_id", null: false
     t.integer "band_status_id", null: false
     t.integer "label_id", null: false

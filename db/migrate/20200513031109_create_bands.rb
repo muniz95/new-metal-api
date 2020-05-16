@@ -8,6 +8,7 @@ class CreateBands < ActiveRecord::Migration[6.0]
       t.string :themes
       t.string :photo
       t.text :info
+      t.boolean :approved
       t.references :user, null: false, foreign_key: true
       t.references :band_status, null: false, foreign_key: true
       t.references :label, null: false, foreign_key: true
