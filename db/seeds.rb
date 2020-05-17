@@ -248,3 +248,18 @@ Release.create(
 )
 
 Participation.create(band: Band.first, release: Release.first)
+
+Disc.create(release: Release.first)
+
+Song.create(title: 'Burn to Emerge', length: 0.52, disc: Disc.first)
+Song.create(title: 'Blinded', length: 3.22, disc: Disc.first)
+Song.create(title: 'Shaped by Fire', length: 3.39, disc: Disc.first)
+Song.create(title: 'Undertow', length: 3.57, disc: Disc.first)
+Song.create(title: 'Torn Between', length: 4.01, disc: Disc.first)
+Song.create(title: 'Gatekeeper', length: 3.25, disc: Disc.first)
+Song.create(title: 'The Wreckage', length: 4.43, disc: Disc.first)
+Song.create(title: 'My Own Grave', length: 4.12, disc: Disc.first)
+Song.create(title: 'Take What\'s Left', length: 4.13, disc: Disc.first)
+Song.create(title: 'Redefined', length: 4.16, disc: Disc.first)
+Song.create(title: 'Only After We\'ve Fallen', length: 3.29, disc: Disc.first)
+Song.create(title: 'The Toll It Takes', length: 3.56, disc: Disc.first)

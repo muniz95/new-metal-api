@@ -10,7 +10,11 @@ class Api::V1::ReleasesController < ApplicationController
 
   # GET /releases/1
   def show
-    render json: @release
+    render json: @release, :include => [
+      :label,
+      {:participations => {:include => :band } },
+      {:discs => {:include => :songs } }
+    ]
   end
 
   # POST /releases
@@ -41,7 +45,7 @@ class Api::V1::ReleasesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_release
-      @release = Release.find(params[:id])
+      @release = Release.includes(:participations).find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_040443) do
+ActiveRecord::Schema.define(version: 2020_05_17_014216) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 2020_05_16_040443) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "discs", force: :cascade do |t|
+    t.string "title"
+    t.integer "release_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["release_id"], name: "index_discs_on_release_id"
+  end
+
   create_table "labels", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -115,6 +123,17 @@ ActiveRecord::Schema.define(version: 2020_05_16_040443) do
     t.index ["user_id"], name: "index_releases_on_user_id"
   end
 
+  create_table "songs", force: :cascade do |t|
+    t.string "title"
+    t.float "length"
+    t.text "lyrics"
+    t.boolean "bonus"
+    t.integer "disc_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disc_id"], name: "index_songs_on_disc_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -143,6 +162,7 @@ ActiveRecord::Schema.define(version: 2020_05_16_040443) do
   add_foreign_key "bands", "countries"
   add_foreign_key "bands", "labels"
   add_foreign_key "bands", "users"
+  add_foreign_key "discs", "releases"
   add_foreign_key "labels", "countries"
   add_foreign_key "labels", "users"
   add_foreign_key "participations", "bands"
@@ -150,5 +170,6 @@ ActiveRecord::Schema.define(version: 2020_05_16_040443) do
   add_foreign_key "releases", "labels"
   add_foreign_key "releases", "releases"
   add_foreign_key "releases", "users"
+  add_foreign_key "songs", "discs"
   add_foreign_key "users", "countries"
 end
