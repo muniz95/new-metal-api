@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :labels
       resources :releases do
         get 'lineup', on: :member
+        get 'versions', on: :member
       end
     end
   end

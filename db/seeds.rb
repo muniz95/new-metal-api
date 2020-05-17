@@ -246,6 +246,16 @@ Release.create(
   format: 'CD', release_date: DateTime.new(2019, 9, 20),
   user: User.first, label: Label.first
 )
+Release.create(
+  name: 'Shaped by Fire', release_type: 'Full-length', genre: 'Metalcore',
+  format: 'Vinyl', release_date: DateTime.new(2019, 9, 20),
+  user: User.first, label: Label.first, release: Release.first
+)
+Release.create(
+  name: 'Shaped by Fire', release_type: 'Full-length', genre: 'Metalcore',
+  format: 'Digital', release_date: DateTime.new(2019, 9, 20),
+  user: User.first, label: Label.first, release: Release.first
+)
 
 Role.create(start: 2000, title: 'Vocals', artist: Artist.first, band: Band.first)
 
