@@ -11,7 +11,8 @@ class Api::V1::BandsController < ApplicationController
   def show
     render json: @band, :include => [
       :country, :user, :band_status, :label,
-      { :participations => { :include => :release} }
+      { :participations => { :include => :release} },
+      { :roles => { :include => :artist} }
     ]
   end
 

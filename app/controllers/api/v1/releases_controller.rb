@@ -1,5 +1,5 @@
 class Api::V1::ReleasesController < ApplicationController
-  before_action :set_release, only: [:show, :update, :destroy]
+  before_action :set_release, only: [:show, :update, :destroy, :lineup]
 
   # GET /releases
   def index
@@ -15,6 +15,11 @@ class Api::V1::ReleasesController < ApplicationController
       {:participations => {:include => :band } },
       {:discs => {:include => :songs } }
     ]
+  end
+
+  def lineup
+    @lineups = @release.lineups
+    render json: @lineups, :include => :artist
   end
 
   # POST /releases

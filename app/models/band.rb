@@ -4,4 +4,5 @@ class Band < ApplicationRecord
   belongs_to :country
   belongs_to :user
   has_many :participations
+  has_many :roles
 end

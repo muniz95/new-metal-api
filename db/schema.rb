@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_014216) do
+ActiveRecord::Schema.define(version: 2020_05_17_180709) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 2020_05_17_014216) do
     t.index ["user_id"], name: "index_labels_on_user_id"
   end
 
+  create_table "lineups", force: :cascade do |t|
+    t.string "role"
+    t.integer "artist_id", null: false
+    t.integer "release_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_lineups_on_artist_id"
+    t.index ["release_id"], name: "index_lineups_on_release_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.integer "band_id", null: false
     t.integer "release_id", null: false
@@ -121,6 +131,18 @@ ActiveRecord::Schema.define(version: 2020_05_17_014216) do
     t.index ["label_id"], name: "index_releases_on_label_id"
     t.index ["release_id"], name: "index_releases_on_release_id"
     t.index ["user_id"], name: "index_releases_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.integer "start"
+    t.integer "end"
+    t.string "title"
+    t.integer "band_id", null: false
+    t.integer "artist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_roles_on_artist_id"
+    t.index ["band_id"], name: "index_roles_on_band_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -165,11 +187,15 @@ ActiveRecord::Schema.define(version: 2020_05_17_014216) do
   add_foreign_key "discs", "releases"
   add_foreign_key "labels", "countries"
   add_foreign_key "labels", "users"
+  add_foreign_key "lineups", "artists"
+  add_foreign_key "lineups", "releases"
   add_foreign_key "participations", "bands"
   add_foreign_key "participations", "releases"
   add_foreign_key "releases", "labels"
   add_foreign_key "releases", "releases"
   add_foreign_key "releases", "users"
+  add_foreign_key "roles", "artists"
+  add_foreign_key "roles", "bands"
   add_foreign_key "songs", "discs"
   add_foreign_key "users", "countries"
 end

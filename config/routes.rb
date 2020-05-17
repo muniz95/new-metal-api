@@ -21,7 +21,9 @@ Rails.application.routes.draw do
       resources :band_statuses, only: :index
       resources :countries
       resources :labels
-      resources :releases
+      resources :releases do
+        get 'lineup', on: :member
+      end
     end
   end
 end

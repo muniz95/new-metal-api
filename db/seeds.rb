@@ -247,6 +247,10 @@ Release.create(
   user: User.first, label: Label.first
 )
 
+Role.create(start: 2000, title: 'Vocals', artist: Artist.first, band: Band.first)
+
+Lineup.create(role: 'Vocals', artist: Artist.first, release: Release.first)
+
 Participation.create(band: Band.first, release: Release.first)
 
 Disc.create(release: Release.first)
