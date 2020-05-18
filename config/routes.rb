@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :artists
       resources :bands do
         get 'members', on: :member
+        get 'reviews', on: :member
       end
       resources :band_statuses, only: :index
       resources :countries
