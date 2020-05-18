@@ -6,4 +6,5 @@ class Release < ApplicationRecord
   has_many :discs
   has_many :lineups
   has_many :releases
+  has_many :reviews
 end

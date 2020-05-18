@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :songs
   devise_for :users,
   path: "",
   path_names: {
@@ -24,7 +23,10 @@ Rails.application.routes.draw do
       resources :releases do
         get 'lineup', on: :member
         get 'versions', on: :member
+        get 'reviews', on: :member
       end
+      resources :reviews
+      resources :songs
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_180709) do
+ActiveRecord::Schema.define(version: 2020_05_18_005448) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -133,6 +133,20 @@ ActiveRecord::Schema.define(version: 2020_05_17_180709) do
     t.index ["user_id"], name: "index_releases_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.integer "rating"
+    t.datetime "date"
+    t.text "content"
+    t.string "status"
+    t.integer "release_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["release_id"], name: "index_reviews_on_release_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer "start"
     t.integer "end"
@@ -194,6 +208,8 @@ ActiveRecord::Schema.define(version: 2020_05_17_180709) do
   add_foreign_key "releases", "labels"
   add_foreign_key "releases", "releases"
   add_foreign_key "releases", "users"
+  add_foreign_key "reviews", "releases"
+  add_foreign_key "reviews", "users"
   add_foreign_key "roles", "artists"
   add_foreign_key "roles", "bands"
   add_foreign_key "songs", "discs"

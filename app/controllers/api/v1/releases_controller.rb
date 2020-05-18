@@ -1,5 +1,7 @@
 class Api::V1::ReleasesController < ApplicationController
-  before_action :set_release, only: [:show, :update, :destroy, :lineup, :versions]
+  before_action :set_release, only: [
+    :show, :update, :destroy, :lineup, :versions, :reviews
+  ]
 
   # GET /releases
   def index
@@ -24,6 +26,10 @@ class Api::V1::ReleasesController < ApplicationController
 
   def versions
     render json: @release.releases, :include => :label
+  end
+
+  def reviews
+    render json: @release.reviews, :include => :user
   end
 
   # POST /releases

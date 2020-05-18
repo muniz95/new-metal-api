@@ -277,3 +277,8 @@ Song.create(title: 'Take What\'s Left', length: 4.13, disc: Disc.first)
 Song.create(title: 'Redefined', length: 4.16, disc: Disc.first)
 Song.create(title: 'Only After We\'ve Fallen', length: 3.29, disc: Disc.first)
 Song.create(title: 'The Toll It Takes', length: 3.56, disc: Disc.first)
+
+Review.create(
+  title: 'Shaped by Fire', rating: 100, date: DateTime.now, content: 'Good.',
+  status: 'Pending', user: User.first, release: Release.first
+)
