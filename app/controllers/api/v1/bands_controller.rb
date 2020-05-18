@@ -1,6 +1,6 @@
 class Api::V1::BandsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  before_action :set_band, only: [:show, :update, :destroy]
+  before_action :set_band, only: [:show, :update, :destroy, :members]
   before_action :check_includes, only: :index
 
   # GET /bands
@@ -14,6 +14,11 @@ class Api::V1::BandsController < ApplicationController
       { :participations => { :include => :release} },
       { :roles => { :include => :artist} }
     ]
+  end
+
+  def members
+    render json: @band.roles, :include => 
+      { :artist => { :include => {:roles => { :include => :band } } } }
   end
 
   # POST /bands
