@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :bands do
         get 'members', on: :member
         get 'reviews', on: :member
+        get 'similar', on: :member
       end
       resources :band_statuses, only: :index
       resources :countries

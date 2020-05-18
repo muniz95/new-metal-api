@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_005448) do
+ActiveRecord::Schema.define(version: 2020_05_18_161145) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -159,6 +159,15 @@ ActiveRecord::Schema.define(version: 2020_05_18_005448) do
     t.index ["band_id"], name: "index_roles_on_band_id"
   end
 
+  create_table "similarities", force: :cascade do |t|
+    t.integer "left_band_id"
+    t.integer "right_band_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["left_band_id"], name: "index_similarities_on_left_band_id"
+    t.index ["right_band_id"], name: "index_similarities_on_right_band_id"
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.float "length"
@@ -212,6 +221,8 @@ ActiveRecord::Schema.define(version: 2020_05_18_005448) do
   add_foreign_key "reviews", "users"
   add_foreign_key "roles", "artists"
   add_foreign_key "roles", "bands"
+  add_foreign_key "similarities", "bands", column: "left_band_id"
+  add_foreign_key "similarities", "bands", column: "right_band_id"
   add_foreign_key "songs", "discs"
   add_foreign_key "users", "countries"
 end

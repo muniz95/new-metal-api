@@ -1,6 +1,6 @@
 class Api::V1::BandsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  before_action :set_band, only: [:show, :update, :destroy, :members, :reviews]
+  before_action :set_band, only: [:show, :update, :destroy, :members, :reviews, :similar]
   before_action :check_includes, only: :index
 
   # GET /bands
@@ -25,6 +25,18 @@ class Api::V1::BandsController < ApplicationController
     render json: @band.participations.map(&:release).flat_map(&:reviews), :include => [
       :user, :release
     ]
+  end
+
+  def similar
+    counts = Hash.new(0)
+    @band.similarities.map(&:right_band).each{|band| counts[band.name] += 1}
+    @similarities = @band.similarities.map(&:right_band).map{ |band| {
+      name: band.name,
+      country: band.country.name,
+      genre: band.genre,
+      score: counts[band.name]
+    }}
+    render json: @similarities
   end
 
   # POST /bands

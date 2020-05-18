@@ -235,6 +235,14 @@ Band.create(
     country: Country.find_by(:name => "United States of America")
 )
 
+Band.create(
+    name: "As I Lay Dying 2", genre: "Metalcore", location: "San Diego, California",
+    themes: "Christianity (early); Relationships, Inner struggles",
+    info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, and guitarist Evan White, and shortly thereafter released Beneath the Encasing of Ashes. The band is named after the William Faulkner novel of the same name. A split CD with American Tragedy followed the next year. In 2003, the band signed with Metal Blade Records and released Frail Words Collapse.",
+    user: User.first, band_status: BandStatus.first, label: Label.first,
+    country: Country.find_by(:name => "Austria")
+)
+
 Artist.create(
     name: "Tim Lambesis", birth: DateTime.new(1980, 11, 21), gender: "Male",
     country: Country.find_by(:name => "United States of America"),
@@ -282,3 +290,5 @@ Review.create(
   title: 'Shaped by Fire', rating: 100, date: DateTime.now, content: 'Good.',
   status: 'Pending', user: User.first, release: Release.first
 )
+
+Similarity.create(left_band: Band.first, right_band: Band.second)
