@@ -1,6 +1,8 @@
 class Api::V1::BandsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  before_action :set_band, only: [:show, :update, :destroy, :members, :reviews, :similar]
+  before_action :set_band, only: [
+    :show, :update, :destroy, :members, :reviews, :similar, :links
+  ]
   before_action :check_includes, only: :index
 
   # GET /bands
@@ -37,6 +39,10 @@ class Api::V1::BandsController < ApplicationController
       score: counts[band.name]
     }}
     render json: @similarities
+  end
+
+  def links
+    render json: @band.links
   end
 
   # POST /bands

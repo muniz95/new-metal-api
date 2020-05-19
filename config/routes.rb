@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         get 'members', on: :member
         get 'reviews', on: :member
         get 'similar', on: :member
+        get 'links', on: :member
       end
       resources :band_statuses, only: :index
       resources :countries

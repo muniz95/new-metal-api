@@ -292,3 +292,8 @@ Review.create(
 )
 
 Similarity.create(left_band: Band.first, right_band: Band.second)
+
+Link.create(site: "Bandcamp", url: "https://asilaydying.bandcamp.com/", band: Band.first)
+Link.create(site: "Deezer", url: "https://www.deezer.com/en/artist/3823", band: Band.first)
+Link.create(site: "Facebook", url: "https://www.facebook.com/asilaydying", band: Band.first)
+Link.create(site: "Homepage", url: "http://www.asilaydying.com/", band: Band.first)

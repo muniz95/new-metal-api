@@ -3,4 +3,5 @@ class Artist < ApplicationRecord
   belongs_to :country, optional: true
   has_many :roles
   has_many :lineups
+  has_many :links
 end

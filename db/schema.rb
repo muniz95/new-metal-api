@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_161145) do
+ActiveRecord::Schema.define(version: 2020_05_18_172335) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -101,6 +101,19 @@ ActiveRecord::Schema.define(version: 2020_05_18_161145) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["artist_id"], name: "index_lineups_on_artist_id"
     t.index ["release_id"], name: "index_lineups_on_release_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "site"
+    t.string "url"
+    t.integer "artist_id"
+    t.integer "band_id"
+    t.integer "label_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_links_on_artist_id"
+    t.index ["band_id"], name: "index_links_on_band_id"
+    t.index ["label_id"], name: "index_links_on_label_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -212,6 +225,9 @@ ActiveRecord::Schema.define(version: 2020_05_18_161145) do
   add_foreign_key "labels", "users"
   add_foreign_key "lineups", "artists"
   add_foreign_key "lineups", "releases"
+  add_foreign_key "links", "artists"
+  add_foreign_key "links", "bands"
+  add_foreign_key "links", "labels"
   add_foreign_key "participations", "bands"
   add_foreign_key "participations", "releases"
   add_foreign_key "releases", "labels"
