@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :band_statuses, only: :index
       resources :countries
       resources :labels
-      resources :releases do
+      resources :albums do
         get 'lineup', on: :member
         get 'versions', on: :member
         get 'reviews', on: :member

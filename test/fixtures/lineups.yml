@@ -3,9 +3,9 @@
 one:
   role: MyString
   artist: one
-  release: one
+  album: one
 
 two:
   role: MyString
   artist: two
-  release: two
+  album: two

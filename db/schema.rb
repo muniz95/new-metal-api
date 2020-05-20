@@ -12,6 +12,27 @@
 
 ActiveRecord::Schema.define(version: 2020_05_18_172335) do
 
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "album_type"
+    t.datetime "album_date"
+    t.string "genre"
+    t.string "format"
+    t.string "catalog_id"
+    t.text "additional_notes"
+    t.text "recording_information"
+    t.text "identifiers"
+    t.integer "user_id", null: false
+    t.integer "label_id"
+    t.integer "album_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_albums_on_album_id"
+    t.index ["label_id"], name: "index_albums_on_label_id"
+    t.index ["user_id"], name: "index_albums_on_user_id"
+  end
+
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "moniker"
@@ -66,10 +87,10 @@ ActiveRecord::Schema.define(version: 2020_05_18_172335) do
 
   create_table "discs", force: :cascade do |t|
     t.string "title"
-    t.integer "release_id", null: false
+    t.integer "album_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["release_id"], name: "index_discs_on_release_id"
+    t.index ["album_id"], name: "index_discs_on_album_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -96,11 +117,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_172335) do
   create_table "lineups", force: :cascade do |t|
     t.string "role"
     t.integer "artist_id", null: false
-    t.integer "release_id", null: false
+    t.integer "album_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_lineups_on_album_id"
     t.index ["artist_id"], name: "index_lineups_on_artist_id"
-    t.index ["release_id"], name: "index_lineups_on_release_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -118,32 +139,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_172335) do
 
   create_table "participations", force: :cascade do |t|
     t.integer "band_id", null: false
-    t.integer "release_id", null: false
+    t.integer "album_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_participations_on_album_id"
     t.index ["band_id"], name: "index_participations_on_band_id"
-    t.index ["release_id"], name: "index_participations_on_release_id"
-  end
-
-  create_table "releases", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "release_type"
-    t.datetime "release_date"
-    t.string "genre"
-    t.string "format"
-    t.string "catalog_id"
-    t.text "additional_notes"
-    t.text "recording_information"
-    t.text "identifiers"
-    t.integer "user_id", null: false
-    t.integer "label_id"
-    t.integer "release_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["label_id"], name: "index_releases_on_label_id"
-    t.index ["release_id"], name: "index_releases_on_release_id"
-    t.index ["user_id"], name: "index_releases_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -152,11 +152,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_172335) do
     t.datetime "date"
     t.text "content"
     t.string "status"
-    t.integer "release_id", null: false
+    t.integer "album_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["release_id"], name: "index_reviews_on_release_id"
+    t.index ["album_id"], name: "index_reviews_on_album_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -214,26 +214,26 @@ ActiveRecord::Schema.define(version: 2020_05_18_172335) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "albums", "albums"
+  add_foreign_key "albums", "labels"
+  add_foreign_key "albums", "users"
   add_foreign_key "artists", "countries"
   add_foreign_key "artists", "users"
   add_foreign_key "bands", "band_statuses"
   add_foreign_key "bands", "countries"
   add_foreign_key "bands", "labels"
   add_foreign_key "bands", "users"
-  add_foreign_key "discs", "releases"
+  add_foreign_key "discs", "albums"
   add_foreign_key "labels", "countries"
   add_foreign_key "labels", "users"
+  add_foreign_key "lineups", "albums"
   add_foreign_key "lineups", "artists"
-  add_foreign_key "lineups", "releases"
   add_foreign_key "links", "artists"
   add_foreign_key "links", "bands"
   add_foreign_key "links", "labels"
+  add_foreign_key "participations", "albums"
   add_foreign_key "participations", "bands"
-  add_foreign_key "participations", "releases"
-  add_foreign_key "releases", "labels"
-  add_foreign_key "releases", "releases"
-  add_foreign_key "releases", "users"
-  add_foreign_key "reviews", "releases"
+  add_foreign_key "reviews", "albums"
   add_foreign_key "reviews", "users"
   add_foreign_key "roles", "artists"
   add_foreign_key "roles", "bands"

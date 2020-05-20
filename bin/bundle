@@ -75,7 +75,7 @@ m = Module.new do
 
     return requirement unless Gem::Version.new(Gem::VERSION) < Gem::Version.new("2.7.0")
 
-    requirement += ".a" if bundler_gem_version.prerelease?
+    requirement += ".a" if bundler_gem_version.prealbum?
 
     requirement
   end

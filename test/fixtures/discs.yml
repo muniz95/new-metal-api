@@ -2,8 +2,8 @@
 
 one:
   title: MyString
-  release: one
+  album: one
 
 two:
   title: MyString
-  release: two
+  album: two

@@ -13,7 +13,7 @@ class Api::V1::BandsController < ApplicationController
   def show
     render json: @band, :include => [
       :country, :user, :band_status, :label,
-      { :participations => { :include => :release} },
+      { :participations => { :include => :album} },
       { :roles => { :include => :artist} }
     ]
   end
@@ -24,8 +24,8 @@ class Api::V1::BandsController < ApplicationController
   end
 
   def reviews
-    render json: @band.participations.map(&:release).flat_map(&:reviews), :include => [
-      :user, :release
+    render json: @band.participations.map(&:album).flat_map(&:reviews), :include => [
+      :user, :album
     ]
   end
 

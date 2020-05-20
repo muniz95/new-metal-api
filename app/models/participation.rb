@@ -1,4 +1,4 @@
 class Participation < ApplicationRecord
   belongs_to :band
-  belongs_to :release
+  belongs_to :album
 end

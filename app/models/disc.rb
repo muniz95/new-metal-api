@@ -1,4 +1,4 @@
 class Disc < ApplicationRecord
-  belongs_to :release
+  belongs_to :album
   has_many :songs
 end

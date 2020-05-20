@@ -1,4 +1,4 @@
 class Lineup < ApplicationRecord
   belongs_to :artist
-  belongs_to :release
+  belongs_to :album
 end

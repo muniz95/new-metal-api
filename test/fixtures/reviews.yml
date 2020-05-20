@@ -6,7 +6,7 @@ one:
   date: 2020-05-17 21:54:48
   content: MyText
   status: MyString
-  release: one
+  album: one
   user: one
 
 two:
@@ -15,5 +15,5 @@ two:
   date: 2020-05-17 21:54:48
   content: MyText
   status: MyString
-  release: two
+  album: two
   user: two
