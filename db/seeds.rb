@@ -250,17 +250,17 @@ Artist.create(
 )
 
 Album.create(
-  name: 'Shaped by Fire', album_type: 'Full-length', genre: 'Metalcore',
+  name: 'Shaped by Fire', type: 'Full-length', genre: 'Metalcore',
   format: 'CD', album_date: DateTime.new(2019, 9, 20),
   user: User.first, label: Label.first
 )
 Album.create(
-  name: 'Shaped by Fire', album_type: 'Full-length', genre: 'Metalcore',
+  name: 'Shaped by Fire', type: 'Full-length', genre: 'Metalcore',
   format: 'Vinyl', album_date: DateTime.new(2019, 9, 20),
   user: User.first, label: Label.first, album: Album.first
 )
 Album.create(
-  name: 'Shaped by Fire', album_type: 'Full-length', genre: 'Metalcore',
+  name: 'Shaped by Fire', type: 'Full-length', genre: 'Metalcore',
   format: 'Digital', album_date: DateTime.new(2019, 9, 20),
   user: User.first, label: Label.first, album: Album.first
 )

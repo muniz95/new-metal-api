@@ -3,7 +3,7 @@ class CreateAlbums < ActiveRecord::Migration[6.0]
     create_table :albums do |t|
       t.string :name
       t.text :description
-      t.string :album_type
+      t.string :type
       t.datetime :album_date
       t.string :genre
       t.string :format
