@@ -23,7 +23,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
           label_id: @album.label_id,
           name: @album.name,
           recording_information: @album.recording_information,
-          type: @album.type,
+          album_type: @album.album_type,
           user_id: @album.user_id
         }
       }, as: :json
@@ -38,7 +38,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update album" do
-    patch api_v1_album_url(@album), params: { album: { additional_notes: @album.additional_notes, catalog_id: @album.catalog_id, description: @album.description, format: @album.format, genre: @album.genre, identifiers: @album.identifiers, label_id: @album.label_id, name: @album.name, recording_information: @album.recording_information, type: @album.type, user_id: @album.user_id } }, as: :json
+    patch api_v1_album_url(@album), params: { album: { additional_notes: @album.additional_notes, catalog_id: @album.catalog_id, description: @album.description, format: @album.format, genre: @album.genre, identifiers: @album.identifiers, label_id: @album.label_id, name: @album.name, recording_information: @album.recording_information, album_type: @album.album_type, user_id: @album.user_id } }, as: :json
     assert_response 200
   end
 

@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2020_05_18_172335) do
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "album_type"
     t.datetime "album_date", precision: nil
     t.string "genre"
     t.string "format"

@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :album do
     name { "Test Album" }
     description { "Test album description" }
-    type { "Full-length" }
+    album_type { "Full-length" }
     genre { "Metal" }
     format { "CD" }
     catalog_id { "TEST001" }
