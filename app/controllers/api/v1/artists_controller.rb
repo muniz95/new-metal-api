@@ -1,30 +1,29 @@
 class Api::V1::ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :update, :destroy]
+  before_action :set_artist, only: %i[ show update destroy ]
 
-  # GET /artists
+  # GET /api/v1/artists
   def index
     @artists = Artist.all
-
     render json: @artists
   end
 
-  # GET /artists/1
+  # GET /api/v1/artists/1
   def show
     render json: @artist
   end
 
-  # POST /artists
+  # POST /api/v1/artists
   def create
     @artist = Artist.new(artist_params)
 
     if @artist.save
-      render json: @artist, status: :created, location: @artist
+      render json: @artist, status: :created
     else
       render json: @artist.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /artists/1
+  # PATCH/PUT /api/v1/artists/1
   def update
     if @artist.update(artist_params)
       render json: @artist
@@ -33,19 +32,20 @@ class Api::V1::ArtistsController < ApplicationController
     end
   end
 
-  # DELETE /artists/1
+  # DELETE /api/v1/artists/1
   def destroy
     @artist.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist
-      @artist = Artist.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def artist_params
-      params.require(:artist).permit(:name, :moniker, :birth, :death, :gender, :district, :city, :biography, :trivia, :user_id, :country_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist
+    @artist = Artist.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def artist_params
+    params.require(:artist).permit(:name, :moniker, :birth, :death, :gender, :district, :city, :biography, :trivia, :user_id, :country_id)
+  end
 end

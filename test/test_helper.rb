@@ -6,8 +6,17 @@ class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+  # Include FactoryBot methods
+  include FactoryBot::Syntax::Methods
 
-  # Add more helper methods to be used by all tests here...
+  # Include Rails route helpers
+  include Rails.application.routes.url_helpers
+
+  # Use transactional tests
+  self.use_transactional_tests = true
+end
+
+class ActionDispatch::IntegrationTest
+  # Include route helpers for integration tests
+  include Rails.application.routes.url_helpers
 end
