@@ -15,7 +15,7 @@ class CountriesControllerTest < ActionDispatch::IntegrationTest
       post countries_url, params: { country: { name: @country.name } }, as: :json
     end
 
-    assert_response 201
+    assert_response :created
   end
 
   test "should show country" do
@@ -25,7 +25,7 @@ class CountriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update country" do
     patch country_url(@country), params: { country: { name: @country.name } }, as: :json
-    assert_response 200
+    assert_response :ok
   end
 
   test "should destroy country" do
@@ -33,6 +33,6 @@ class CountriesControllerTest < ActionDispatch::IntegrationTest
       delete country_url(@country), as: :json
     end
 
-    assert_response 204
+    assert_response :no_content
   end
 end

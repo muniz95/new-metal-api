@@ -29,7 +29,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
       }, as: :json
     end
 
-    assert_response 201
+    assert_response :created
   end
 
   test "should show album" do
@@ -39,7 +39,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update album" do
     patch api_v1_album_url(@album), params: { album: { additional_notes: @album.additional_notes, catalog_id: @album.catalog_id, description: @album.description, format: @album.format, genre: @album.genre, identifiers: @album.identifiers, label_id: @album.label_id, name: @album.name, recording_information: @album.recording_information, album_type: @album.album_type, user_id: @album.user_id } }, as: :json
-    assert_response 200
+    assert_response :ok
   end
 
   test "should destroy album" do
@@ -47,6 +47,6 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
       delete api_v1_album_url(@album), as: :json
     end
 
-    assert_response 204
+    assert_response :no_content
   end
 end

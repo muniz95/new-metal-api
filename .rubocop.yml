@@ -1,0 +1,27 @@
+# .rubocop.yml
+
+# Inherit the automatically generated exceptions for existing code
+inherit_from: .rubocop_todo.yml
+
+# Load the extensions for Rails, Performance, and RSpec
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+# Set the target Ruby and Rails versions for accurate linting
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2  # Change to your project's Ruby version
+  TargetRailsVersion: 7.1 # Change to your project's Rails version
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'config/initializers/*'
+    - 'config/environments/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+
+# Example of a common style preference
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

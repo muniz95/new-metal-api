@@ -7,18 +7,22 @@ ruby '3.2.0' # or latest Ruby version
 gem 'rails', '~> 7.1.0'
 
 # Remove version pins to get latest versions
-gem 'pg'
-gem 'puma'
 gem 'bootsnap', require: false
-gem 'image_processing'
-gem 'rack-cors'
 gem 'devise'
 gem 'devise-jwt'
+gem 'image_processing'
+gem 'pg'
+gem 'puma'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'debug'
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false # Optional, but recommended for performance checks
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do

@@ -15,7 +15,7 @@ class BandsControllerTest < ActionDispatch::IntegrationTest
       post bands_url, params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
     end
 
-    assert_response 201
+    assert_response :created
   end
 
   test "should show band" do
@@ -25,7 +25,7 @@ class BandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update band" do
     patch band_url(@band), params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
-    assert_response 200
+    assert_response :ok
   end
 
   test "should destroy band" do
@@ -33,6 +33,6 @@ class BandsControllerTest < ActionDispatch::IntegrationTest
       delete band_url(@band), as: :json
     end
 
-    assert_response 204
+    assert_response :no_content
   end
 end

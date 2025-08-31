@@ -28,7 +28,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
       }, as: :json
     end
 
-    assert_response 201
+    assert_response :created
   end
 
   test "should show artist" do
@@ -48,7 +48,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
         user_id: @artist.user_id 
       } 
     }, as: :json
-    assert_response 200
+    assert_response :ok
   end
 
   test "should destroy artist" do
@@ -56,6 +56,6 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
       delete api_v1_artist_url(@artist), as: :json
     end
 
-    assert_response 204
+    assert_response :no_content
   end
 end

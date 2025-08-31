@@ -15,7 +15,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
       post songs_url, params: { song: { bonus: @song.bonus, disc_id: @song.disc_id, length: @song.length, lyrics: @song.lyrics, title: @song.title } }, as: :json
     end
 
-    assert_response 201
+    assert_response :created
   end
 
   test "should show song" do
@@ -25,7 +25,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update song" do
     patch song_url(@song), params: { song: { bonus: @song.bonus, disc_id: @song.disc_id, length: @song.length, lyrics: @song.lyrics, title: @song.title } }, as: :json
-    assert_response 200
+    assert_response :ok
   end
 
   test "should destroy song" do
@@ -33,6 +33,6 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
       delete song_url(@song), as: :json
     end
 
-    assert_response 204
+    assert_response :no_content
   end
 end
