@@ -36,7 +36,6 @@ Layout/IndentationWidth:
 
 Layout/LineLength:
   Enabled: true
-  Max: 100
 
 Layout/FirstMethodArgumentLineBreak:
   Enabled: true

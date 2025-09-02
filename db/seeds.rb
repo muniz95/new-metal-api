@@ -206,8 +206,11 @@ Country.create(name: "Zambia")
 Country.create(name: "Zimbabwe")
 
 User.create(
-    first_name: "Admin", email: "admin@admin.com", username: "admin",
-    country: Country.find_by(:name => "Brazil"), password: "admin123"
+  first_name: "Admin",
+  email: "admin@admin.com",
+  username: "admin",
+  country: Country.find_by(:name => "Brazil"),
+  password: "admin123"
 )
 
 BandStatus.create(title: "Active", color: "690")
@@ -218,51 +221,92 @@ BandStatus.create(title: "Unknown", color: "BD632C")
 BandStatus.create(title: "Disputed", color: "B0F")
 
 Label.create(
-    name: "Nuclear Blast", address: "Oeschstr. 40 73072 Donzdorf",
-    country: Country.find_by(:name => "Germany"), phone: "+49 7162 9280-0",
-    status: "Active", specialities: "Hardcore (early), Metal and subgenres",
-    founding_date: DateTime.new(1987), online_shopping: "Yes",
-    description: "Founded by Markus Staiger.",
-    trivia: "Originally called Blast Records. The label's first album was a vinyl compilation called Senseless Death, which featured a plethora of US hardcore bands, including Attitude, Sacred Denial, Impulse Manslaughter, and others. Only 1000 copies were pressed (catalogue # NB 001).",
-    user: User.first
+  name: "Nuclear Blast",
+  address: "Oeschstr. 40 73072 Donzdorf",
+  country: Country.find_by(:name => "Germany"),
+  phone: "+49 7162 9280-0",
+  status: "Active",
+  specialities: "Hardcore (early), Metal and subgenres",
+  founding_date: DateTime.new(1987),
+  online_shopping: "Yes",
+  description: "Founded by Markus Staiger.",
+  trivia: "Originally called Blast Records. The label's first album was a vinyl compilation " \
+          "called Senseless Death, which featured a plethora of US hardcore bands, including " \
+          "Attitude, Sacred Denial, Impulse Manslaughter, and others. Only 1000 copies were " \
+          "pressed (catalogue # NB 001).",
+  user: User.first
 )
 
 Band.create(
-    name: "As I Lay Dying", genre: "Metalcore", location: "San Diego, California",
-    themes: "Christianity (early); Relationships, Inner struggles",
-    info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, and guitarist Evan White, and shortly thereafter albumd Beneath the Encasing of Ashes. The band is named after the William Faulkner novel of the same name. A split CD with American Tragedy followed the next year. In 2003, the band signed with Metal Blade Records and albumd Frail Words Collapse.",
-    user: User.first, band_status: BandStatus.first, label: Label.first,
-    country: Country.find_by(:name => "United States of America")
+  name: "As I Lay Dying",
+  genre: "Metalcore",
+  location: "San Diego, California",
+  themes: "Christianity (early); Relationships, Inner struggles",
+  info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, " \
+        "and guitarist Evan White, and shortly thereafter albumd Beneath the Encasing of Ashes. " \
+        "The band is named after the William Faulkner novel of the same name. A split CD with " \
+        "American Tragedy followed the next year. In 2003, the band signed with Metal Blade " \
+        "Records and albumd Frail Words Collapse.",
+  user: User.first,
+  band_status: BandStatus.first,
+  label: Label.first,
+  country: Country.find_by(:name => "United States of America")
 )
 
 Band.create(
-    name: "As I Lay Dying 2", genre: "Metalcore", location: "San Diego, California",
-    themes: "Christianity (early); Relationships, Inner struggles",
-    info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, and guitarist Evan White, and shortly thereafter albumd Beneath the Encasing of Ashes. The band is named after the William Faulkner novel of the same name. A split CD with American Tragedy followed the next year. In 2003, the band signed with Metal Blade Records and albumd Frail Words Collapse.",
-    user: User.first, band_status: BandStatus.first, label: Label.first,
-    country: Country.find_by(:name => "Austria")
+  name: "As I Lay Dying 2",
+  genre: "Metalcore",
+  location: "San Diego, California",
+  themes: "Christianity (early); Relationships, Inner struggles",
+  info: "The group formed as a trio in 2000 with vocalist Tim Lambesis, drummer Jordan Mancino, " \
+        "and guitarist Evan White, and shortly thereafter albumd Beneath the Encasing of Ashes. " \
+        "The band is named after the William Faulkner novel of the same name. A split CD with " \
+        "American Tragedy followed the next year. In 2003, the band signed with Metal Blade " \
+        "Records and albumd Frail Words Collapse.",
+  user: User.first,
+  band_status: BandStatus.first,
+  label: Label.first,
+  country: Country.find_by(:name => "Austria")
 )
 
 Artist.create(
-    name: "Tim Lambesis", birth: DateTime.new(1980, 11, 21), gender: "Male",
-    country: Country.find_by(:name => "United States of America"),
-    district: "Arizona", city: "Scottsdale", user: User.first
+  name: "Tim Lambesis",
+  birth: DateTime.new(1980, 11, 21),
+  gender: "Male",
+  country: Country.find_by(:name => "United States of America"),
+  district: "Arizona",
+  city: "Scottsdale",
+  user: User.first
 )
 
 Album.create(
-  name: 'Shaped by Fire', album_type: 'Full-length', genre: 'Metalcore',
-  format: 'CD', album_date: DateTime.new(2019, 9, 20),
-  user: User.first, label: Label.first
+  name: 'Shaped by Fire',
+  album_type: 'Full-length',
+  genre: 'Metalcore',
+  format: 'CD',
+  album_date: DateTime.new(2019, 9, 20),
+  user: User.first,
+  label: Label.first
 )
 Album.create(
-  name: 'Shaped by Fire', album_type: 'Full-length', genre: 'Metalcore',
-  format: 'Vinyl', album_date: DateTime.new(2019, 9, 20),
-  user: User.first, label: Label.first, album: Album.first
+  name: 'Shaped by Fire',
+  album_type: 'Full-length',
+  genre: 'Metalcore',
+  format: 'Vinyl',
+  album_date: DateTime.new(2019, 9, 20),
+  user: User.first,
+  label: Label.first,
+  album: Album.first
 )
 Album.create(
-  name: 'Shaped by Fire', album_type: 'Full-length', genre: 'Metalcore',
-  format: 'Digital', album_date: DateTime.new(2019, 9, 20),
-  user: User.first, label: Label.first, album: Album.first
+  name: 'Shaped by Fire',
+  album_type: 'Full-length',
+  genre: 'Metalcore',
+  format: 'Digital',
+  album_date: DateTime.new(2019, 9, 20),
+  user: User.first,
+  label: Label.first,
+  album: Album.first
 )
 
 Role.create(start: 2000, title: 'Vocals', artist: Artist.first, band: Band.first)
@@ -287,8 +331,13 @@ Song.create(title: 'Only After We\'ve Fallen', length: 3.29, disc: Disc.first)
 Song.create(title: 'The Toll It Takes', length: 3.56, disc: Disc.first)
 
 Review.create(
-  title: 'Shaped by Fire', rating: 100, date: DateTime.now, content: 'Good.',
-  status: 'Pending', user: User.first, album: Album.first
+  title: 'Shaped by Fire',
+  rating: 100,
+  date: DateTime.now,
+  content: 'Good.',
+  status: 'Pending',
+  user: User.first,
+  album: Album.first
 )
 
 Similarity.create(left_band: Band.first, right_band: Band.second)
