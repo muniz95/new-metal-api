@@ -2,35 +2,35 @@ require 'test_helper'
 
 class BandsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @band = bands(:one)
+    @band = create(:band)
   end
 
   test "should get index" do
-    get bands_url, as: :json
+    get api_v1_bands_url, as: :json
     assert_response :success
   end
 
   test "should create band" do
     assert_difference('Band.count') do
-      post bands_url, params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
+      post api_v1_bands_url, params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
     end
 
     assert_response :created
   end
 
   test "should show band" do
-    get band_url(@band), as: :json
+    get api_v1_band_url(@band), as: :json
     assert_response :success
   end
 
   test "should update band" do
-    patch band_url(@band), params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
+    patch api_v1_band_url(@band), params: { band: { user_id: @band.user_id, band_status_id: @band.band_status_id, country_id: @band.country_id, genre: @band.genre, info: @band.info, label_id: @band.label_id, name: @band.name, photo: @band.photo, themes: @band.themes } }, as: :json
     assert_response :ok
   end
 
   test "should destroy band" do
     assert_difference('Band.count', -1) do
-      delete band_url(@band), as: :json
+      delete api_v1_band_url(@band), as: :json
     end
 
     assert_response :no_content
