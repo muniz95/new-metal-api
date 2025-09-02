@@ -3,8 +3,12 @@ class Band < ApplicationRecord
   belongs_to :label
   belongs_to :country
   belongs_to :user
-  has_many :participations
-  has_many :roles
-  has_many :links
-  has_many :similarities, class_name: "Similarity", foreign_key: "left_band_id"
+  has_many :participations, dependent: :nullify
+  has_many :roles, dependent: :nullify
+  has_many :links, dependent: :nullify
+  has_many :similarities,
+    dependent: :nullify,
+    class_name: "Similarity",
+    foreign_key: "left_band_id",
+    inverse_of: :left_band
 end
