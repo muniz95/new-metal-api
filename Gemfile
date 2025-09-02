@@ -18,6 +18,7 @@ gem 'rack-cors'
 group :development, :test do
   gem 'debug'
   gem 'factory_bot_rails'
+  gem 'lefthook', require: false
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false # Optional, but recommended for performance checks

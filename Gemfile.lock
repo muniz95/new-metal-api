@@ -145,6 +145,7 @@ GEM
     jwt (2.10.2)
       base64
     language_server-protocol (3.17.0.5)
+    lefthook (1.12.3)
     lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.24.1)
@@ -349,6 +350,7 @@ DEPENDENCIES
   devise-jwt
   factory_bot_rails
   image_processing
+  lefthook
   pg
   puma
   rack-cors
