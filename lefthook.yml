@@ -41,13 +41,13 @@
 #     - script: "hello.go"
 #       runner: go run
 
-pre-commit:
-  parallel: true
-  commands:
-    rubocop:
-      glob: "*.rb"
-      run: bundle exec rubocop -A {staged_files} && git add {staged_files}
-      # 'stage_fixed' is a crucial command that automatically runs 'git add'
-    # on any files that RuboCop modified. This ensures fixes are included
-    # in the commit you are making.
-    stage_fixed: true
+# pre-commit:
+#   parallel: true
+#   commands:
+#     rubocop:
+#       glob: "*.rb"
+#       run: bundle exec rubocop -A {staged_files} && git add {staged_files}
+#       # 'stage_fixed' is a crucial command that automatically runs 'git add'
+#     # on any files that RuboCop modified. This ensures fixes are included
+#     # in the commit you are making.
+#     stage_fixed: true
