@@ -18,7 +18,7 @@ class Api::V1::LabelsController < ApplicationController
     @label = Label.new(label_params)
 
     if @label.save
-      render json: @label, status: :created, location: @label
+      render json: @label, status: :created
     else
       render json: @label.errors, status: :unprocessable_entity
     end

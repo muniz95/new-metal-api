@@ -4,7 +4,7 @@
 inherit_from: .rubocop_todo.yml
 
 # Load the extensions for Rails, Performance, and RSpec
-require:
+plugins:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
