@@ -25,3 +25,40 @@ AllCops:
 # Example of a common style preference
 Style/StringLiterals:
   EnforcedStyle: single_quotes
+
+Layout/IndentationStyle:
+  # Use 2 spaces for indentation, which is the community standard.
+  EnforcedStyle: spaces
+
+Layout/IndentationWidth:
+  # Set the width of each indentation level to 2 spaces.
+  Width: 2
+
+Layout/LineLength:
+  Enabled: true
+  Max: 100
+
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+  AllowMultilineFinalElement: false
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+
+Layout/MultilineMethodParameterLineBreaks:
+  Enabled: true
+
+Layout/MultilineOperationIndentation:
+  Enabled: true
+  EnforcedStyle: aligned
+
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_first_parameter
+
+Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent
+  IndentationWidth: 2
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
