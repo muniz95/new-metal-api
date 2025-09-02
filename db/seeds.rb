@@ -317,6 +317,15 @@ Participation.create(band: Band.first, album: Album.first)
 
 Disc.create(album: Album.first)
 
+SocialNetwork.create(name: 'Instagram')
+SocialNetwork.create(name: 'Bandcamp')
+SocialNetwork.create(name: 'Soundcloud')
+SocialNetwork.create(name: 'Twitter')
+SocialNetwork.create(name: 'Facebook')
+SocialNetwork.create(name: 'VKontakte')
+SocialNetwork.create(name: 'TikTok')
+SocialNetwork.create(name: 'YouTube')
+
 Song.create(title: 'Burn to Emerge', length: 0.52, disc: Disc.first)
 Song.create(title: 'Blinded', length: 3.22, disc: Disc.first)
 Song.create(title: 'Shaped by Fire', length: 3.39, disc: Disc.first)

@@ -12,15 +12,15 @@ plugins:
 # Set the target Ruby and Rails versions for accurate linting
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.2  # Change to your project's Ruby version
+  TargetRubyVersion: 3.2 # Change to your project's Ruby version
   TargetRailsVersion: 7.1 # Change to your project's Rails version
   Exclude:
-    - 'db/schema.rb'
-    - 'bin/*'
-    - 'config/initializers/*'
-    - 'config/environments/*'
-    - 'vendor/**/*'
-    - 'node_modules/**/*'
+    - "db/schema.rb"
+    - "bin/*"
+    - "config/initializers/*"
+    - "config/environments/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
 
 # Example of a common style preference
 Style/StringLiterals:
@@ -61,3 +61,8 @@ Layout/FirstParameterIndentation:
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
+
+Metrics/BlockLength:
+  Exclude:
+    - "db/schema.rb"
+    - "spec/**/*_spec.rb"

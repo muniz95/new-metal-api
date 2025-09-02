@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2020_05_18_172335) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_02_081512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2020_05_18_172335) do
     t.string "themes"
     t.string "photo"
     t.text "info"
-    t.boolean "approved"
+    t.boolean "approved", default: false, null: false
     t.bigint "user_id", null: false
     t.bigint "band_status_id", null: false
     t.bigint "label_id", null: false
@@ -183,11 +183,17 @@ ActiveRecord::Schema[7.1].define(version: 2020_05_18_172335) do
     t.index ["right_band_id"], name: "index_similarities_on_right_band_id"
   end
 
+  create_table "social_networks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.float "length"
     t.text "lyrics"
-    t.boolean "bonus"
+    t.boolean "bonus", default: false, null: false
     t.bigint "disc_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
